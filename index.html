@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Address Book</title>
+  </head>
+  <body>
+    <div class="header">Address Book</div>
+
+    <div class="add-contact">
+      <button type="button" id="add-contact-button">Add Contact</button>
+      <div class="add-contact-form-container">
+        <form class="add-contact-form">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            placeholder="Enter your first name" />
+          <label for="surname">Surname:</label>
+          <input
+            type="text"
+            name="surname"
+            id="surname"
+            required
+            placeholder="Enter your surname" />
+          <label for="phoneNumber">Phone number:</label>
+          <input
+            type="number"
+            name="phoneNumber"
+            id="phoneNumber"
+            required
+            placeholder="Enter your phone number" />
+          <label for="address">Address:</label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            required
+            placeholder="Enter your address" />
+          <button id="submit" type="submit">Submit</button>
+          <button id="reset" type="reset">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="content">
+      Contact List
+      <input type="text" name="search" id="search" placeholder="Search" />
+      <button type="button">Search</button>
+      <div class="contactList">
+        <div class="contact">
+          <div>Name: Sirajis Salekin</div>
+          <div>Surname: Sajon</div>
+          <div>Phone: 01234567</div>
+          <div>Address: Dhaka</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
