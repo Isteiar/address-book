@@ -1,7 +1,7 @@
 let contactList = [];
 $('document').ready(function () {
-  $('#add-contact-button').on('click', function () {
-    $('.add-contact-form-container').show();
+  $('#addContactButton').on('click', function () {
+    $('.addContactFormContainer').show();
   });
   $('#submit').on('click', function (event) {
     event.preventDefault();
@@ -16,7 +16,7 @@ $('document').ready(function () {
         address,
         phone,
       });
-      $('.add-contact-form-container').hide();
+      $('.addContactFormContainer').hide();
       $('#name').val('');
       $('#surname').val('');
       $('#address').val('');
@@ -39,8 +39,10 @@ $('document').ready(function () {
   });
 
   $('#reset').on('click', function () {
-    $('.add-contact-form-container').hide();
+    $('.addContactFormContainer').hide();
   });
 });
 
-function deleteContact(id) {}
+function deleteContact(id) {
+  console.log(id);
+}

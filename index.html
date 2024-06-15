@@ -8,60 +8,65 @@
     <title>Address Book</title>
   </head>
   <body>
-    <div class="header">Address Book</div>
+    <div class="container">
+      <div class="header">Address Book</div>
 
-    <div class="add-contact">
-      <button type="button" id="add-contact-button">Add Contact</button>
-      <div class="add-contact-form-container">
-        <form class="add-contact-form">
-          <label for="name">Name:</label>
-          <input
-            class="clearInput"
-            type="text"
-            name="name"
-            id="name"
-            required
-            placeholder="Enter your first name" />
-          <label for="surname">Surname:</label>
-          <input
-            class="clearInput"
-            type="text"
-            name="surname"
-            id="surname"
-            required
-            placeholder="Enter your surname" />
-          <label for="address">Address:</label>
-          <input
-            class="clearInput"
-            type="text"
-            name="address"
-            id="address"
-            required
-            placeholder="Enter your address" />
-          <label for="phoneNumber">Phone number:</label>
-          <input
-            class="clearInput"
-            type="number"
-            name="phoneNumber"
-            id="phoneNumber"
-            required
-            placeholder="Enter your phone number" />
-          <div class="submitCancel">
-            <button id="submit" type="submit">Submit</button>
-            <button id="reset" type="reset">Cancel</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="content">
-      <div class="titleSearch">
-        <div class="contactTitle">Contact list</div>
-             <div> <input type="text" name="search" id="search" placeholder="Search" />
-        <button type="button">Search</button>
+      <div class="addContact">
+        <button type="button" id="addContactButton">Add Contact</button>
+        <div class="addContactFormContainer">
+          <form class="addContactForm">
+            <label for="name">Name:</label>
+            <input
+              class="inputHandle"
+              type="text"
+              name="name"
+              id="name"
+              required
+              placeholder="Enter your first name" />
+            <label for="surname">Surname:</label>
+            <input
+              class="inputHandle"
+              type="text"
+              name="surname"
+              id="surname"
+              required
+              placeholder="Enter your surname" />
+            <label for="address">Address:</label>
+            <input
+              class="inputHandle"
+              type="text"
+              name="address"
+              id="address"
+              required
+              placeholder="Enter your address" />
+            <label for="phoneNumber">Phone number:</label>
+            <input
+              class="inputHandle"
+              type="number"
+              name="phoneNumber"
+              id="phoneNumber"
+              required
+              placeholder="Enter your phone number" />
+            <div class="submitCancel">
+              <button id="submit" type="submit">Submit</button>
+              <button id="reset" type="reset">Cancel</button>
             </div>
+          </form>
+        </div>
       </div>
-      <div class="contactList"></div>
+
+      <div class="underline"></div>
+
+      <div class="content">
+        <div class="titleSearch">
+          <div class="contactTitle">Contact list</div>
+          <div class="inputAndOutputMarge">
+            <input type="text" name="search" id="search" placeholder="Search" />
+            <button type="button" class="searchButton">Search</button>
+          </div>
+        </div>
+        <div class="contactList"></div>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
