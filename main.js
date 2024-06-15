@@ -1,6 +1,7 @@
 let contactList = [];
 
 $('document').ready(function () {
+  renderAllContacts(contactList);
   $('#addContactButton').on('click', function () {
     $('.addContactFormContainer').show();
   });
@@ -16,6 +17,7 @@ $('document').ready(function () {
         surname,
         address,
         phone,
+        time: Date.now(),
       });
       $('.addContactFormContainer').hide();
       $('#name').val('');
@@ -39,31 +41,45 @@ $('document').ready(function () {
         el.phone.toLowerCase().includes(searchValue)
       );
     });
-    $('#search').val('');
-    renderAllContacts(filteredContactList);
+    renderAllContacts(filteredContactList, searchValue);
   });
 });
 
-function deleteContact(id) {
-  const filteredContactList = contactList.filter(function (el, idx) {
-    return idx !== id;
+function deleteContact(time) {
+  contactList = contactList.filter(function (el, idx) {
+    return el.time !== time;
   });
-  renderAllContacts(filteredContactList);
+  clearSearch();
 }
 
-function renderAllContacts(contactToShow) {
+function renderAllContacts(contactToShow, searchingFor) {
   const allContacts = contactToShow
     .map(function (el, idx) {
       return `<div class="contact">
-        <div class="information">
-          <div>Name: ${el.name}</div>
-          <div>Surname: ${el.surname}</div>
-          <div>Address: ${el.address}</div>
-          <div>Phone: ${el.phone}</div>
-        </div>
-        <button type="button" onclick="deleteContact(${idx})">Delete</button>
-        </div>`;
+    <div class="information">
+    <div>Name: ${el.name}</div>
+    <div>Surname: ${el.surname}</div>
+    <div>Address: ${el.address}</div>
+    <div>Phone: ${el.phone}</div>
+    </div>
+    <button type="button" onclick="deleteContact(${el.time})">Delete</button>
+    </div>`;
     })
     .join('\n');
-  $('.contactList').html(allContacts);
+  const finalOutput = searchingFor
+    ? `<div class="searchingFor">
+  <div>Searching for: ${searchingFor}</div>
+  <button type="button" class="clearSearchButton" onclick="clearSearch()"> Clear Search
+  </button></div> ${allContacts}`
+    : allContacts;
+  $('.contactList').html(
+    contactToShow.length === 0
+      ? '<div class="noDataFound">No data found</div> '
+      : finalOutput
+  );
+}
+
+function clearSearch() {
+  $('#search').val('');
+  renderAllContacts(contactList);
 }

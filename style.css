@@ -108,6 +108,22 @@ body {
   border-radius: 8px;
   padding: 8px 14px;
 }
-.content{
+.content {
   margin-right: 20px;
+}
+
+.noDataFound {
+  margin: 20px;
+}
+
+.searchingFor {
+  display: flex;
+  gap: 16px;
+  padding: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.clearSearchButton {
+  padding: 4px 8px;
 }
