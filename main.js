@@ -1,4 +1,5 @@
 let contactList = [];
+
 $('document').ready(function () {
   $('#addContactButton').on('click', function () {
     $('.addContactFormContainer').show();
@@ -21,9 +22,39 @@ $('document').ready(function () {
       $('#surname').val('');
       $('#address').val('');
       $('#phoneNumber').val('');
-      const allContacts = contactList
-        .map(function (el, idx) {
-          return `<div class="contact">
+      renderAllContacts(contactList);
+    }
+  });
+  $('#reset').on('click', function () {
+    $('.addContactFormContainer').hide();
+  });
+  $('.searchButton').on('click', function (ev) {
+    const searchValue = $('#search').val().toLowerCase();
+
+    const filteredContactList = contactList.filter(function (el) {
+      return (
+        el.name.toLowerCase().includes(searchValue) ||
+        el.surname.toLowerCase().includes(searchValue) ||
+        el.address.toLowerCase().includes(searchValue) ||
+        el.phone.toLowerCase().includes(searchValue)
+      );
+    });
+    $('#search').val('');
+    renderAllContacts(filteredContactList);
+  });
+});
+
+function deleteContact(id) {
+  const filteredContactList = contactList.filter(function (el, idx) {
+    return idx !== id;
+  });
+  renderAllContacts(filteredContactList);
+}
+
+function renderAllContacts(contactToShow) {
+  const allContacts = contactToShow
+    .map(function (el, idx) {
+      return `<div class="contact">
         <div class="information">
           <div>Name: ${el.name}</div>
           <div>Surname: ${el.surname}</div>
@@ -32,17 +63,7 @@ $('document').ready(function () {
         </div>
         <button type="button" onclick="deleteContact(${idx})">Delete</button>
         </div>`;
-        })
-        .join('\n');
-      $('.contactList').html(allContacts);
-    }
-  });
-
-  $('#reset').on('click', function () {
-    $('.addContactFormContainer').hide();
-  });
-});
-
-function deleteContact(id) {
-  console.log(id);
+    })
+    .join('\n');
+  $('.contactList').html(allContacts);
 }
